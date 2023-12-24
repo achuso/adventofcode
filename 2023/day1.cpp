@@ -92,7 +92,7 @@ private:
 };
 
 int main() {
-    Solution sol("d1_input.txt");
+    Solution sol("day1_input.txt");
     cout << "part1 ans: " << sol.Solve_1() << endl;
     cout << "part2 ans: " << sol.Solve_2() << endl;
     return 0;
