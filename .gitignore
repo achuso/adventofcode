@@ -1,6 +1,7 @@
 *.out
 *.exe
 *.o
+*.class
 
 .vscode/
 .idea/
