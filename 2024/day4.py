@@ -47,11 +47,37 @@ class Solution:
                         occurrences += 1
         
         return occurrences
+    
+    
+    def sol2(self) -> int:
+        rows: int = len(self.data)
+        cols: int = len(self.data[0]) if rows > 0 else 0
+        count: int = 0
+
+        for row in range(1, rows - 1):
+            for col in range(1, cols - 1):
+                # Center must be 'A'
+                if self.data[row][col] != 'A':
+                    continue
+
+                # Diagonal adjagency
+                top_left: str = self.data[row - 1][col - 1]
+                top_right: str = self.data[row - 1][col + 1]
+                bottom_left: str = self.data[row + 1][col - 1]
+                bottom_right: str = self.data[row + 1][col + 1]
+
+                diag1: set[str] = {top_left, bottom_right}
+                diag2: set[str] = {top_right, bottom_left}
+
+                if diag1 == {'M', 'S'} and diag2 == {'M', 'S'}:
+                    count += 1
+
+        return count
+
 
 def main():
     ans = Solution()
-    print(ans.sol1())
-    del ans
+    print(f"Part1 ans: {ans.sol1()}", f"Part2 ans: {ans.sol2()}", sep="\n")
 
 if __name__ == "__main__":
     main()
